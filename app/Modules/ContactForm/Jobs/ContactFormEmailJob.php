@@ -3,7 +3,7 @@
 namespace App\Modules\ContactForm\Jobs;
 
 use App\Modules\ContactForm\Mails\SendAdminEnquiryEmail;
-use App\Modules\ContactForm\Mails\SendUserThankyouEmail;
+use App\Modules\ContactForm\Mails\SendUserThankYouEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -33,7 +33,7 @@ class ContactFormEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->data['email'])->send(new SendUserThankyouEmail($this->data));
+        Mail::to($this->data['email'])->send(new SendUserThankYouEmail($this->data));
         Mail::to(config('mail.admin_email'))->send(new SendAdminEnquiryEmail($this->data));
     }
 }
